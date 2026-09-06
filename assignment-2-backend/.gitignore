@@ -163,8 +163,8 @@ cython_debug/
 .vscode/
 
 # SQLite databases
-*.db
-*.sqlite3
+# *.db
+# *.sqlite3
 
 # OS generated files
 .DS_Store
