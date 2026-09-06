@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import api from '../lib/api';
-import { Product } from '../types';
+import type { Product } from '../types';
 
 export default function AdminDashboard() {
   const { user, isAuthenticated } = useAuth();

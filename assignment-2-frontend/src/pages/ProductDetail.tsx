@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../lib/api';
-import { Product } from '../types';
+import type { Product } from '../types';
 import { useCart } from '../context/CartContext';
 
 export default function ProductDetail() {
