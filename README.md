@@ -99,3 +99,35 @@ To test the admin dashboard and full checkout flow, use the following pre-seeded
 - Password: `admin123`
 
 *(Login as admin to see the "Admin" button in the navigation bar, allowing you to add, edit, and delete products).*
+
+---
+
+## ⏱️ Development Details
+
+### Total Time Taken
+- **Approximately 12-14 hours** (spanning across Figma translation, frontend state management, backend API design, AI integration, and full deployment).
+
+### AI Tools Used
+- **Tools:** Claude Code / Cursor / Advanced AI Coding Assistants.
+- **How they were used:** 
+  - **Boilerplate & Scaffolding:** Used to quickly generate repetitive React components and FastAPI route structures.
+  - **Styling:** Accelerated the translation of Figma designs into Tailwind CSS utility classes.
+  - **Debugging:** Assisted in rapidly diagnosing and fixing complex deployment issues (such as CORS errors on Render and SPA routing on Vercel).
+  - **Prompt Engineering:** Helped structure the system prompt for the OpenRouter AI Support Agent to ensure consistent JSON outputs.
+
+---
+
+## 📈 Scaling Strategy
+
+If the number of users and AI requests increased significantly, the system would need to evolve from its current monolithic architecture:
+
+1. **Database Migration:** 
+   - Move from SQLite to a managed **PostgreSQL** cluster (e.g., AWS RDS or Supabase) to handle high concurrent read/write operations for product catalogs and order history.
+2. **Caching Layer:**
+   - Introduce **Redis** to cache frequently accessed data (like the product catalog) and store user sessions to reduce database load.
+3. **AI Request Queuing:**
+   - LLM APIs (like OpenRouter) often have strict rate limits and high latency. We would implement a message broker (like **RabbitMQ** or **Redis + Celery**) to process AI support requests asynchronously, preventing the FastAPI server from blocking during high traffic.
+4. **Backend Load Balancing:**
+   - Containerize the FastAPI backend using Docker and deploy it to a scalable orchestration service (like **AWS ECS** or **Kubernetes**) behind a Load Balancer to horizontally scale API instances based on CPU/Memory usage.
+5. **Frontend CDN:**
+   - Continue leveraging global CDNs (like Vercel or AWS CloudFront) to serve static frontend assets close to the user's geographical location.
