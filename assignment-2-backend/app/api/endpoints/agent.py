@@ -71,7 +71,6 @@ async def suggest_products(
         # Only import LangChain if a real API key is provided
         from langchain_openai import ChatOpenAI
         from langchain.prompts import PromptTemplate
-        from langchain.schema.runnable import RunnableSequence
 
         if settings.OPENROUTER_API_KEY and settings.OPENROUTER_API_KEY != "sk-or-mock":
             llm = ChatOpenAI(
