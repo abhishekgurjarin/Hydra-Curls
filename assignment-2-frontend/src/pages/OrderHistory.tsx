@@ -11,7 +11,7 @@ export default function OrderHistory() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await api.get('/orders/my-orders');
+        const response = await api.get('/orders/');
         setOrders(response.data);
       } catch (error) {
         console.error("Failed to fetch orders", error);
@@ -86,7 +86,7 @@ export default function OrderHistory() {
                           <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                         </div>
                       </div>
-                      <p className="font-bold text-gray-900 text-sm">${(item.price_at_time * item.quantity).toFixed(2)}</p>
+                      <p className="font-bold text-gray-900 text-sm">${(item.price_at_purchase * item.quantity).toFixed(2)}</p>
                     </div>
                   ))}
                 </div>
