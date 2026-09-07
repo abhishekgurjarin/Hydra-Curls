@@ -11,7 +11,7 @@ class StripeService:
     def create_checkout_session(order: Order, user: User, success_url: str, cancel_url: str):
         if settings.STRIPE_SECRET_KEY == "sk_test_mock":
             # Mock behavior if no key is provided
-            return "mock_session_id", "http://localhost:5173/checkout/success"
+            return "mock_session_id", success_url
             
         try:
             line_items = []
